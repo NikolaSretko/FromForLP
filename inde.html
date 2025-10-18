@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Website - Briefing Formular</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 1.1em;
+        }
+
+        .form-content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 1.5em;
+            color: #667eea;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-number {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .question {
+            margin-bottom: 25px;
+        }
+
+        .question-label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+            display: block;
+            font-size: 1.05em;
+        }
+
+        .question-sublabel {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="url"],
+        textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="url"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        input[type="checkbox"],
+        input[type="radio"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: #667eea;
+        }
+
+        .checkbox-item label {
+            cursor: pointer;
+            color: #444;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .radio-item:hover {
+            border-color: #667eea;
+            background: #f8f9ff;
+        }
+
+        .radio-item input[type="radio"]:checked + label {
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .inline-input {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .inline-input input {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .file-upload-area {
+            border: 2px dashed #667eea;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            background: #f8f9ff;
+            margin-top: 10px;
+        }
+
+        .file-upload-area p {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .file-list {
+            margin-top: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            text-align: left;
+        }
+
+        .file-item {
+            padding: 8px;
+            background: #f0f0f0;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            font-size: 0.9em;
+        }
+
+        .submit-section {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #f0f0f0;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 50px;
+            font-size: 1.1em;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        .info-box {
+            background: #f8f9ff;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .info-box p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 600px) {
+            .form-content {
+                padding: 20px;
+            }
+
+            .header {
+                padding: 30px 20px;
+            }
+
+            .header h1 {
+                font-size: 1.5em;
+            }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 Portfolio Website Briefing</h1>
+            <p>Bitte füllen Sie das Formular aus, damit wir Ihre perfekte Website erstellen können</p>
+        </div>
+
+        <form class="form-content" id="briefingForm">
+            <!-- Section 1: Inhalt & Profil -->
+            <div class="section">
+                <h2 class="section-title">
+                    <span class="section-number">1</span>
+                    Inhalt & Profil
+                </h2>
+
+                <div class="question">
+                    <label class="question-label">1.1. Ihr Name / Portfolio-Name</label>
+                    <span class="question-sublabel">Wie soll Ihr Name auf der Website erscheinen?</span>
+                    <input type="text" name="name" placeholder="z.B. Max Mustermann" required>
+                </div>
+
+                <div class="question">
+                    <label class="question-label">1.2. Texte für die Website</label>
+                    <span class="question-sublabel">Haben Sie bereits fertige Texte für folgende Bereiche?</span>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="text_hero" name="texts[]" value="hero">
+                            <label for="text_hero">Hero-Section (Startseite / Einleitung)</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="text_about" name="texts[]" value="about">
+                            <label for="text_about">Über mich</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="text_services" name="texts[]" value="services">
+                            <label for="text_services">Leistungen / Services</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="text_portfolio" name="texts[]" value="portfolio">
+                            <label for="text_portfolio">Portfolio / Referenzen</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="text_footer" name="texts[]" value="footer">
+                            <label for="text_footer">Footer / Kontakt</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="text_placeholder" name="texts[]" value="placeholder">
+                            <label for="text_placeholder">Bitte verwenden Sie Platzhaltertexte, ich werde diese später ersetzen</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <label class="question-label">1.3. Sprachstil / Tonalität (optional)</label>
+                    <span class="question-sublabel">Möchten Sie, dass ein bestimmter Ton verwendet wird? (z.B. professionell, locker, modern, etc.)</span>
+                    <input type="text" name="tone" placeholder="z.B. Professionell aber zugänglich">
+                </div>
+            </div>
+
+            <!-- Section 2: Bilder & Medien -->
+            <div class="section">
+                <h2 class="section-title">
+                    <span class="section-number">2</span>
+                    Bilder & Medien
+                </h2>
+
+                <div class="question">
+                    <label class="question-label">2.1. Profilfoto für Hero-Section</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="photo_yes" name="profile_photo" value="yes">
+                            <label for="photo_yes">Ja – Ich sende es mit</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="photo_no" name="profile_photo" value="no" checked>
+                            <label for="photo_no">Nein – Bitte verwenden Sie einen Platzhalter</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <label class="question-label">2.2. Projektbilder / Screenshots für Referenzen</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="project_yes" name="project_images" value="yes">
+                            <label for="project_yes">Ja – Ich sende sie mit</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="project_no" name="project_images" value="no" checked>
+                            <label for="project_no">Nein – Bitte verwenden Sie Platzhalter</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <label class="question-label">2.3. Sonstige Medien (z.B. Logos, Icons, Videos)</label>
+                    <textarea name="other_media" placeholder="Bitte hier angeben oder Dateien anhängen..."></textarea>
+                </div>
+
+                <div class="question">
+                    <label class="question-label">Dateien hochladen</label>
+                    <span class="question-sublabel">Profilfoto, Projektbilder, Logo, etc. (Max 10MB pro Datei)</span>
+                    <div class="file-upload-area" id="dropZone">
+                        <p>📁 Dateien hier ablegen oder klicken zum Auswählen</p>
+                        <input type="file" id="fileInput" multiple accept="image/*,.pdf,.doc,.docx" style="display: none;">
+                        <button type="button" class="submit-btn" style="padding: 10px 30px; font-size: 0.9em;" onclick="document.getElementById('fileInput').click()">Dateien auswählen</button>
+                    </div>
+                    <div id="fileList" class="file-list" style="display: none;"></div>
+                </div>
+            </div>
+
+            <!-- Section 3: Funktionen & Technik -->
+            <div class="section">
+                <h2 class="section-title">
+                    <span class="section-number">3</span>
+                    Funktionen & Technik
+                </h2>
+
+                <div class="question">
+                    <label class="question-label">3.1. Blog-System</label>
+                    <span class="question-sublabel">Wie möchten Sie den Blog umsetzen?</span>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="blog_full" name="blog_system" value="full">
+                            <label for="blog_full">Voll funktionsfähiges Blog-System (mit Backend zum Artikel schreiben)</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="blog_static" name="blog_system" value="static" checked>
+                            <label for="blog_static">Statische Darstellung mit Beispielartikeln / Mockups</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="blog_none" name="blog_system" value="none">
+                            <label for="blog_none">Kein Blog gewünscht</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <label class="question-label">3.2. Kontaktformular</label>
+                    <span class="question-sublabel">Wie soll das Kontaktformular funktionieren?</span>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="contact_functional" name="contact_form" value="functional" checked>
+                            <label for="contact_functional">Funktional mit E-Mail-Versand</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="contact_visual" name="contact_form" value="visual">
+                            <label for="contact_visual">Nur visuell / Design ohne Funktion</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="contact_none" name="contact_form" value="none">
+                            <label for="contact_none">Kein Kontaktformular</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <label class="question-label">3.3. Calendly-Integration</label>
+                    <span class="question-sublabel">Für Terminbuchung direkt über die Website</span>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="calendly_yes" name="calendly" value="yes">
+                            <label for="calendly_yes">Ja, ich habe einen Calendly-Link</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="calendly_no" name="calendly" value="no" checked>
+                            <label for="calendly_no">Nein, keine Integration gewünscht</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="calendly_later" name="calendly" value="later">
+                            <label for="calendly_later">Noch nicht – bitte Platzhalter verwenden</label>
+                        </div>
+                    </div>
+                    <div id="calendly_link_field" style="display:none; margin-top: 15px;">
+                        <input type="url" name="calendly_link" placeholder="https://calendly.com/ihr-link">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 4: Zusätzliche Wünsche -->
+            <div class="section">
+                <h2 class="section-title">
+                    <span class="section-number">4</span>
+                    Zusätzliche Wünsche / Hinweise
+                </h2>
+
+                <div class="question">
+                    <label class="question-label">Besondere Wünsche</label>
+                    <span class="question-sublabel">Farben, Designideen, Referenzseiten oder technische Anforderungen</span>
+                    <textarea name="additional_wishes" placeholder="z.B. Ich mag dunkle Themes, Parallax-Effekte sind wichtig, Referenz: www.example.com..."></textarea>
+                </div>
+            </div>
+
+            <!-- Section 5: Datei-Upload Info -->
+            <div class="section">
+                <h2 class="section-title">
+                    <span class="section-number">📎</span>
+                    Datei-Upload
+                </h2>
+
+                <div class="info-box">
+                    <p><strong>Bitte senden Sie folgende Dateien (wenn vorhanden) separat mit:</strong></p>
+                    <ul style="margin-top: 10px; margin-left: 20px; line-height: 1.8;">
+                        <li>Profilfoto (JPG, PNG)</li>
+                        <li>Projektbilder / Screenshots</li>
+                        <li>Logo</li>
+                        <li>Texte als Word, PDF oder direkt im Formular</li>
+                        <li>Link zu Calendly und Social Media</li>
+                    </ul>
+                </div>
+
+                <div class="question">
+                    <label class="question-label">API Endpoint</label>
+                    <span class="question-sublabel">Wohin sollen die Daten gesendet werden?</span>
+                    <input type="url" name="api_endpoint" id="apiEndpoint" placeholder="https://ihr-backend.com/api/briefing" value="https://your-backend.com/api/submit">
+                </div>
+
+                <div class="question">
+                    <label class="question-label">Social Media & Links</label>
+                    <input type="url" name="linkedin" placeholder="LinkedIn Profil URL" style="margin-bottom: 10px;">
+                    <input type="url" name="xing" placeholder="Xing Profil URL" style="margin-bottom: 10px;">
+                    <input type="url" name="other_links" placeholder="Weitere Links (GitHub, Instagram, etc.)">
+                </div>
+            </div>
+
+            <!-- Submit Section -->
+            <div class="submit-section">
+                <p style="color: #666; margin-bottom: 20px;">Vielen Dank! Sobald alle Informationen vorliegen, beginnt die Entwicklung. Bei Fragen erfolgt eine Rückmeldung.</p>
+                <div id="loadingSpinner" style="display: none; margin-bottom: 20px;">
+                    <div style="display: inline-block; width: 40px; height: 40px; border: 4px solid #f3f3f3; border-top: 4px solid #667eea; border-radius: 50%; animation: spin 1s linear infinite;"></div>
+                    <p style="margin-top: 10px; color: #667eea;">Daten werden gesendet...</p>
+                </div>
+                <div id="successMessage" style="display: none; background: #4ade80; color: white; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                    ✅ Erfolgreich gesendet!
+                </div>
+                <div id="errorMessage" style="display: none; background: #ef4444; color: white; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                    ❌ Fehler beim Senden. Bitte versuchen Sie es erneut.
+                </div>
+                <button type="submit" class="submit-btn" id="submitBtn">✨ Formular absenden</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        let uploadedFiles = [];
+
+        // Drag & Drop functionality
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        const fileList = document.getElementById('fileList');
+
+        dropZone.addEventListener('click', (e) => {
+            if (e.target !== dropZone.querySelector('button')) {
+                fileInput.click();
+            }
+        });
+
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.style.borderColor = '#667eea';
+            dropZone.style.background = '#e0e7ff';
+        });
+
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.style.borderColor = '#667eea';
+            dropZone.style.background = '#f8f9ff';
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.style.borderColor = '#667eea';
+            dropZone.style.background = '#f8f9ff';
+            handleFiles(e.dataTransfer.files);
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            handleFiles(e.target.files);
+        });
+
+        function handleFiles(files) {
+            for (let file of files) {
+                if (file.size > 10 * 1024 * 1024) {
+                    alert(`Datei ${file.name} ist zu groß (max 10MB)`);
+                    continue;
+                }
+                uploadedFiles.push(file);
+            }
+            displayFiles();
+        }
+
+        function displayFiles() {
+            if (uploadedFiles.length === 0) {
+                fileList.style.display = 'none';
+                return;
+            }
+
+            fileList.style.display = 'block';
+            fileList.innerHTML = '<strong>Hochgeladene Dateien:</strong>';
+            uploadedFiles.forEach((file, index) => {
+                const fileItem = document.createElement('div');
+                fileItem.className = 'file-item';
+                fileItem.innerHTML = `
+                    📎 ${file.name} (${(file.size / 1024).toFixed(2)} KB)
+                    <button type="button" onclick="removeFile(${index})" style="float: right; background: #ef4444; color: white; border: none; padding: 4px 8px; border-radius: 4px; cursor: pointer;">✕</button>
+                `;
+                fileList.appendChild(fileItem);
+            });
+        }
+
+        window.removeFile = function(index) {
+            uploadedFiles.splice(index, 1);
+            displayFiles();
+        };
+
+        // Show Calendly link field when "Yes" is selected
+        document.querySelectorAll('input[name="calendly"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const linkField = document.getElementById('calendly_link_field');
+                if (this.value === 'yes') {
+                    linkField.style.display = 'block';
+                } else {
+                    linkField.style.display = 'none';
+                }
+            });
+        });
+
+        // Convert file to base64
+        function fileToBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = reject;
+                reader.readAsDataURL(file);
+            });
+        }
+
+        // Form submission handler with POST fetch
+        document.getElementById('briefingForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const loadingSpinner = document.getElementById('loadingSpinner');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+
+            // Hide messages
+            successMessage.style.display = 'none';
+            errorMessage.style.display = 'none';
+            
+            // Show loading
+            submitBtn.disabled = true;
+            loadingSpinner.style.display = 'block';
+            
+            try {
+                // Collect form data
+                const formData = new FormData(this);
+                const data = {
+                    timestamp: new Date().toISOString(),
+                    profile: {
+                        name: formData.get('name'),
+                        tone: formData.get('tone')
+                    },
+                    content: {
+                        availableTexts: formData.getAll('texts[]'),
+                        usePlaceholder: formData.getAll('texts[]').includes('placeholder')
+                    },
+                    media: {
+                        profilePhoto: formData.get('profile_photo'),
+                        projectImages: formData.get('project_images'),
+                        otherMedia: formData.get('other_media')
+                    },
+                    features: {
+                        blogSystem: formData.get('blog_system'),
+                        contactForm: formData.get('contact_form'),
+                        calendly: {
+                            enabled: formData.get('calendly'),
+                            link: formData.get('calendly_link') || null
+                        }
+                    },
+                    additional: {
+                        wishes: formData.get('additional_wishes')
+                    },
+                    socialMedia: {
+                        linkedin: formData.get('linkedin') || null,
+                        xing: formData.get('xing') || null,
+                        other: formData.get('other_links') || null
+                    },
+                    files: []
+                };
+
+                // Convert uploaded files to base64
+                for (let file of uploadedFiles) {
+                    const base64 = await fileToBase64(file);
+                    data.files.push({
+                        name: file.name,
+                        size: file.size,
+                        type: file.type,
+                        data: base64
+                    });
+                }
+
+                // Get API endpoint
+                const apiEndpoint = formData.get('api_endpoint') || 'https://script.google.com/macros/s/AKfycbw9lt3kNre30_t5oSIvNifPs7tnYFD18qJBbo2dKsf9SFm3Wwt8AQEkRF49k076ZcOkaA/exec';
+
+                console.log('=== SENDING DATA ===');
+                console.log(JSON.stringify(data, null, 2));
+
+                // Send POST request
+                const response = await fetch(apiEndpoint, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    console.log('✅ SUCCESS:', result);
+                    
+                    // Show success message
+                    loadingSpinner.style.display = 'none';
+                    successMessage.style.display = 'block';
+                    successMessage.innerHTML = '✅ Erfolgreich gesendet! Ihre Daten wurden empfangen.';
+                    
+                    // Reset form after 2 seconds
+                    setTimeout(() => {
+                        document.getElementById('briefingForm').reset();
+                        uploadedFiles = [];
+                        displayFiles();
+                        successMessage.style.display = 'none';
+                        submitBtn.disabled = false;
+                    }, 3000);
+                } else {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+            } catch (error) {
+                console.error('❌ ERROR:', error);
+                
+                // Show error message
+                loadingSpinner.style.display = 'none';
+                errorMessage.style.display = 'block';
+                errorMessage.innerHTML = `❌ Fehler: ${error.message}<br><small>Die Daten wurden in der Console gespeichert (F12)</small>`;
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
