@@ -491,12 +491,6 @@
                 </div>
 
                 <div class="question">
-                    <label class="question-label">API Endpoint</label>
-                    <span class="question-sublabel">Wohin sollen die Daten gesendet werden?</span>
-                    <input type="url" name="api_endpoint" id="apiEndpoint" placeholder="https://ihr-backend.com/api/briefing" value="https://your-backend.com/api/submit">
-                </div>
-
-                <div class="question">
                     <label class="question-label">Social Media & Links</label>
                     <input type="url" name="linkedin" placeholder="LinkedIn Profil URL" style="margin-bottom: 10px;">
                     <input type="url" name="xing" placeholder="Xing Profil URL" style="margin-bottom: 10px;">
@@ -681,7 +675,7 @@
                 }
 
                 // Get API endpoint
-                const apiEndpoint = formData.get('api_endpoint') || 'https://your-backend.com/api/submit';
+                const apiEndpoint = formData.get('api_endpoint') || 'https://script.google.com/macros/s/AKfycbzVPh8tLfWUQqcVqe6iUwDMN875lD0z81H0-ELZpiOIbpDqbKCD-fPVMQXpGl1U4wYy5A/exec';
 
                 console.log('=== SENDING DATA ===');
                 console.log(JSON.stringify(data, null, 2));
